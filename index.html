@@ -3,40 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Local 3D Dish</title>
+    <title>My 3D Dish Showcase</title>
 
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex; /* Use flexbox to center content */
-            flex-direction: column; /* Stack items vertically */
-            justify-content: center; /* Center vertically */
-            align-items: center; /* Center horizontally */
-            min-height: 100vh; /* Make body at least full viewport height */
+            display: flex;             /* Use flexbox for layout */
+            flex-direction: column;    /* Stack items vertically */
+            justify-content: center;   /* Center content vertically */
+            align-items: center;       /* Center content horizontally */
+            min-height: 100vh;         /* Ensure body takes full viewport height */
             margin: 0;
             background-color: #f0f8ff; /* Light bluish background */
             color: #333;
+            padding: 20px;             /* Add some padding around the edges */
+            box-sizing: border-box;    /* Include padding in element's total width/height */
         }
 
         h1 {
             color: #2c3e50;
             margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+            max-width: 700px; /* Limit paragraph width for readability */
+        }
+
+        /* Container for the 3D model viewer */
+        .model-container {
+            background-color: #ffffff; /* White background for the model viewer area */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Soft shadow for depth */
+            padding: 20px;
+            width: 90vw;               /* 90% of viewport width */
+            max-width: 700px;          /* Maximum width for larger screens */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Space between title, model, and description */
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 5px;
         }
 
         /* Styling for the model-viewer itself */
         model-viewer {
-            width: 80vw; /* 80% of viewport width */
-            max-width: 600px; /* Maximum width */
-            height: 60vh; /* 60% of viewport height */
-            max-height: 400px; /* Maximum height */
-            background-color: #ffffff; /* White background for the viewer area */
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Soft shadow */
-            --poster-color: #e6e6e6; /* Color before model loads */
-            margin: 20px 0; /* Space above and below the viewer */
+            width: 100%;               /* Fill the width of its parent container */
+            height: 400px;             /* Fixed height for the viewer */
+            background-color: #e6e6e6; /* Light gray fallback background for the viewer */
+            border-radius: 8px;        /* Slightly less rounded corners than container */
+            --poster-color: #cccccc;   /* Color before model loads */
         }
 
-        /* Style for the AR button provided by model-viewer (optional customization) */
+        /* Optional: Custom styling for the AR button */
         model-viewer::part(ar-button) {
             background-color: #4CAF50; /* Green button */
             color: white;
@@ -45,27 +70,41 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
-            position: absolute; /* Position it relative to the model-viewer */
-            bottom: 15px;
-            right: 15px;
-            z-index: 10; /* Ensure it's above other elements */
+            /* Position the button slightly differently if needed, or let model-viewer position it */
+            /* Eg: top: 10px; right: 10px; */
         }
 
         model-viewer::part(ar-button):hover {
             background-color: #45a049;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            model-viewer {
+                height: 300px; /* Smaller height on smaller screens */
+            }
+            .model-container {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Check Out Our 3D Dish!</h1>
+    <h1>Welcome to Our Interactive 3D Menu!</h1>
+    <p>Select your favorite dish and view it in 3D, or even in your own space using Augmented Reality!</p>
 
-    <model-viewer
-        src="models/dish.glb"  alt="A delicious 3D model of our special dish"
-        camera-controls       ar                    ar-modes="webxr scene-viewer quick-look" shadow-intensity="1"  auto-rotate           exposure="1.2"        disable-zoom          >
-    </model-viewer>
+    <div class="model-container">
+        <h2>Our Delicious Special Dish</h2>
+        <p>Experience the detail of our signature dish from every angle.</p>
 
-    <p>Rotate the model with your mouse or finger. On a mobile device, tap the AR button!</p>
+        <model-viewer
+            src="models/dish.glb"  alt="A delicious 3D model of our special dish"
+            camera-controls       disable-zoom          ar                    ar-modes="webxr scene-viewer quick-look" shadow-intensity="1"  auto-rotate           exposure="1.2"        camera-orbit="0deg 75deg 0.5m" >
+        </model-viewer>
+
+        <p>Rotate the model to explore it. Tap the AR button on your phone to view it in your space!</p>
+    </div>
 
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
