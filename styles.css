@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 16px;
+}
+
+header {
+  background: #000;
+  color: #fff;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #fff;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero {
+  background: url('https://via.placeholder.com/1200x400') center center / cover no-repeat;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.menu-section {
+  margin: 40px 0;
+}
+
+.menu-items {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.menu-card {
+  width: calc(50% - 10px);
+  background: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card img {
+  width: 100%;
+  display: block;
+}
+
+.menu-card h4 {
+  margin: 16px;
+}
+
+.menu-card p {
+  margin: 0 16px 16px;
+  color: #666;
+}
+
+footer {
+  background: #111;
+  color: #ccc;
+  padding: 20px 0;
+  text-align: center;
+}
