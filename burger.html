@@ -27,20 +27,36 @@
       Served on a toasted sesame bun, it's a satisfying choice for any appetite.
     </p>
 
-    <h3>3D Preview</h3>
+    <h3>View in AR</h3>
+
     <model-viewer
-      src="models/burger.glb"
+      id="burgerViewer"
       ar
-      ar-modes="scene-viewer"
+      ar-modes="scene-viewer quick-look webxr"
       auto-rotate
       camera-controls
       environment-image="neutral"
       shadow-intensity="1"
       style="width: 100%; height: 400px;"
     >
+      <button slot="ar-button" style="background: tomato; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
+        🍔 View Burger in Your Space
+      </button>
     </model-viewer>
 
     <p><a href="index.html">← Back to menu</a></p>
+
+    <script>
+      const viewer = document.getElementById('burgerViewer');
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+      if (isIOS) {
+        viewer.setAttribute('ios-src', 'models/burger.usdz');
+        viewer.setAttribute('src', 'models/burger.gltf'); // still needed to render preview
+      } else {
+        viewer.setAttribute('src', 'models/burger.gltf');
+      }
+    </script>
   </div>
 </body>
 </html>
