@@ -10,6 +10,7 @@
 <body>
   <div class="content">
     <h1>Burger</h1>
+
     <h3>Ingredients</h3>
     <ul>
       <li>Beef patty</li>
@@ -22,13 +23,14 @@
 
     <h3>Summary</h3>
     <p>
-      Our classic burger is grilled to perfection and stacked with fresh ingredients. Served on a toasted sesame bun, it's a satisfying choice for any appetite.
+      Our classic burger is grilled to perfection and stacked with fresh ingredients. 
+      Served on a toasted sesame bun, it's a satisfying choice for any appetite.
     </p>
 
     <h3>View in AR</h3>
     <model-viewer
       src="models/burger.glb"
-      ios-src="models/burger.usdz"
+      ios-src="models/Burger.usdz"
       ar
       ar-modes="scene-viewer quick-look webxr"
       auto-rotate
@@ -37,7 +39,7 @@
       shadow-intensity="1"
       style="width: 100%; height: 400px;"
     >
-      <button slot="ar-button" style="background: tomato; color: white; padding: 12px; border: none; border-radius: 8px;">
+      <button slot="ar-button" style="background: tomato; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
         🍔 View Burger in Your Space
       </button>
     </model-viewer>
